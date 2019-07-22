@@ -12,8 +12,6 @@ import { Subscription } from 'rxjs';
 export class ListeComponent implements OnInit {
 
   listeLivres;
-  page = 1;
-  pageSize = 5;
 
   listeLivreSubscription: Subscription;
 

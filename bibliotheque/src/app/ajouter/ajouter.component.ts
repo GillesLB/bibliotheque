@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { AjouterLivreService } from 'src/app/services/ajouter-livre.service';
+import { Livre } from 'src/app/modeles/livres';
 import { AfficherListeService } from 'src/app/services/afficher-liste.service';
 
 @Component({
@@ -12,17 +12,23 @@ import { AfficherListeService } from 'src/app/services/afficher-liste.service';
 })
 export class AjouterComponent implements OnInit {
 
+  listeLivres;
   ajouterLivreForm: FormGroup;
   errorMessage: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private ajouterLivreService: AjouterLivreService,
-    private afficherLivreService: AfficherListeService,
+    private afficherListeService: AfficherListeService,
   ) { }
 
   ngOnInit() {
+    this.afficherListeService.listeLivreSubscription = this.afficherListeService.listeSubject.subscribe(
+      (listeLivres: Livre[]) => {
+        this.listeLivres = listeLivres;
+      }
+    );
+    this.afficherListeService.emitListeLivres();
     this.initForm();
   }
 
@@ -34,20 +40,20 @@ export class AjouterComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  onSubmitForm() {
     const titre = this.ajouterLivreForm.get('titre').value;
-    const auteur = this.ajouterLivreForm.get('auteur').value;
     const genre = this.ajouterLivreForm.get('genre').value;
+    const auteur = this.ajouterLivreForm.get('auteur').value;
+    const nouveauLivre = new Livre(titre, auteur, genre);
 
-    this.ajouterLivreService.ajouterLivre(titre, auteur, genre).then(
-      () => {
-        this.router.navigate(['/liste']);
-      },
-      (error) => {
-        this.errorMessage = error;
-      }
-    );
-    this.afficherLivreService.sauverListeLivres();
+    this.ajouterLivre(nouveauLivre);
+    this.router.navigate(['/liste']);
+  }
+
+  ajouterLivre(nouveauLivre: Livre) {
+    this.listeLivres.push(nouveauLivre);
+    this.afficherListeService.emitListeLivres();
+    this.afficherListeService.sauverListeLivres();
   }
 
 }

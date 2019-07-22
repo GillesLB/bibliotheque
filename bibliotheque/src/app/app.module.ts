@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { AppComponent } from 'src/app/app.component';
 import { HeaderComponent } from 'src/app/header/header.component';
@@ -14,9 +16,6 @@ import { AjouterComponent } from 'src/app/ajouter/ajouter.component';
 import { AfficherListeService } from 'src/app/services/afficher-liste.service';
 import { AjouterLivreService } from 'src/app/services/ajouter-livre.service';
 import { SupprimerLivreService } from 'src/app/services/supprimer-livre.service';
-import { PaginationServiceService } from 'src/app/services/pagination-service.service';
-import { PaginationComponent } from 'src/app/pagination/pagination.component';
-
 
 const appRoutes: Routes = [
   { path: 'accueil', component: AccueilComponent },
@@ -34,7 +33,6 @@ const appRoutes: Routes = [
     ErreurComponent,
     ListeComponent,
     AjouterComponent,
-    PaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -43,12 +41,12 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
+    NgxPaginationModule,
   ],
   providers: [
     AfficherListeService,
     AjouterLivreService,
     SupprimerLivreService,
-    PaginationServiceService,
   ],
   bootstrap: [AppComponent]
 })

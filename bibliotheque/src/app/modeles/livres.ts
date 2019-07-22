@@ -1,5 +1,9 @@
 export class Livre {
-    titre: string;
-    auteur: string;
-    genre: string;
+
+    constructor(
+        public titre: string,
+        public auteur: string,
+        public genre: string
+    ) {}
+
 }

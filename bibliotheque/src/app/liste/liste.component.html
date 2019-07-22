@@ -2,18 +2,18 @@
 
   <h1>Liste des livres</h1>
 
-  <table class="table">
+  <table class="table table-striped">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">#</th>
-        <th scope="col">Titre</th>
-        <th scope="col">Auteur</th>
-        <th scope="col">Genre</th>
+        <th class="col-1" scope="col">#</th>
+        <th class="col-7" scope="col">Titre</th>
+        <th class="col-2" scope="col">Auteur</th>
+        <th class="col-2" scope="col">Genre</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let livre of listeLivres | slice: (page - 1) * pageSize : (page - 1) * pageSize + pageSize; let i = index">
-        <th scope="col">{{i + 1}}</th>
+      <tr *ngFor="let livre of listeLivres | paginate: { itemsPerPage: 5, currentPage: p }">
+        <th scope="col">{{listeLivres.indexOf(livre) + 1}}</th>
         <th scope="col">{{livre.titre}}</th>
         <th scope="col">{{livre.auteur}}</th>
         <th scope="col">{{livre.genre}}</th>
@@ -21,6 +21,6 @@
     </tbody>
   </table>
 
-  <app-pagination></app-pagination>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 </div>
