@@ -16,6 +16,10 @@ import { AjouterComponent } from 'src/app/ajouter/ajouter.component';
 import { AfficherListeService } from 'src/app/services/afficher-liste.service';
 import { AjouterLivreService } from 'src/app/services/ajouter-livre.service';
 import { SupprimerLivreService } from 'src/app/services/supprimer-livre.service';
+import { SupprimerComponent } from './supprimer/supprimer.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 
 const appRoutes: Routes = [
   { path: 'accueil', component: AccueilComponent },
@@ -33,6 +37,7 @@ const appRoutes: Routes = [
     ErreurComponent,
     ListeComponent,
     AjouterComponent,
+    SupprimerComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +47,9 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
     NgxPaginationModule,
+    NoopAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   providers: [
     AfficherListeService,
