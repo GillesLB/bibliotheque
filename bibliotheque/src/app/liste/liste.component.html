@@ -50,19 +50,19 @@
     <table mat-table [dataSource]="data">
 
       <ng-container matColumnDef="position" class="col-8">
-        <th mat-header-cell class="col-8" *matHeaderCellDef> Titre </th>
+        <th mat-header-cell class="col-8 alert alert-dark" *matHeaderCellDef> Titre </th>
         <td mat-cell class="col-8" *matCellDef="let livre"> {{livre.titre}} </td>
       </ng-container>
 
       <!-- Name Column -->
       <ng-container matColumnDef="name" class="col-2">
-        <th mat-header-cell class="col-2" *matHeaderCellDef> Auteur </th>
+        <th mat-header-cell class="col-2 alert alert-dark" *matHeaderCellDef> Auteur </th>
         <td mat-cell class="col-2" *matCellDef="let livre"> {{livre.auteur}} </td>
       </ng-container>
 
       <!-- Weight Column -->
       <ng-container matColumnDef="weight" class="col-2">
-        <th mat-header-cell class="col-2" *matHeaderCellDef> Genre </th>
+        <th mat-header-cell class="col-2 alert alert-dark" *matHeaderCellDef> Genre </th>
         <td mat-cell class="col-2" *matCellDef="let livre"> {{livre.genre}} </td>
       </ng-container>
 
@@ -82,6 +82,23 @@
   </div>
 
   <!--  <pagination-controls (pageChange)="p = $event"></pagination-controls>-->
+
+<!--    Circles :-->
+<!--    <div class="circle" id="circles-1"></div>-->
+
+<!--    <div class="circles-wrp" style="position: relative; display: inline-block;">-->
+<!--      <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80">-->
+<!--&lt;!&ndash;        <path fill="transparent" stroke="#D3B6C6" stroke-width="7" d="M 39.992565928065126 3.500000757060633 A 36.5 36.5 0 1 1 39.949302232260386 3.500035209108127 Z"></path>&ndash;&gt;-->
+<!--&lt;!&ndash;        <path fill="transparent" stroke="#4B253A" stroke-width="7" d="M 39.992565928065126 3.500000757060633 A 36.5 36.5 0 0 1 59.07174573163989 71.12103010421852 "></path>&ndash;&gt;-->
+<!--        <circle r="30" cx="41" cy="41" fill="transparent" stroke="#D3B6C6" stroke-width="7" />-->
+<!--        <circle r="30" cx="41" cy="41" fill="transparent" stroke="#13D55A" stroke-width="7" stroke-linejoin="round" stroke-linecap="round" style="animation: 900ms ease 0s 1 normal forwards running donut-show-0;"/>-->
+<!--      </svg>-->
+<!--      <div class="circles-text" style="position: absolute; top: 0px; left: 0px; text-align: center; width: 100%; font-size: 28px; height: 80px; line-height: 80px;">-->
+<!--        <span class="circles-integer">{{value}}</span>-->
+<!--      </div>-->
+<!--    </div>-->
+
+    <app-pie-test></app-pie-test>
 
   </div>
 </div>

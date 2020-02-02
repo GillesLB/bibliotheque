@@ -18,6 +18,8 @@ export class ListeComponent implements OnInit {
   pageIndex = 0;
   pageSize = 4;
 
+  value = 73;
+
   listeLivres;
   isLoading = false;
 
@@ -32,6 +34,7 @@ export class ListeComponent implements OnInit {
 
   ngOnInit() {
     this.loadData();
+
   }
 
   loadData() {
